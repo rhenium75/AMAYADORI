@@ -1,6 +1,6 @@
 ﻿#pragma once
 # include <Siv3D.hpp>
-# include "./AMAYADORI/AMAYADORI.cpp"
+# include "./AMAYADORI/AMAYADORI.hpp"
 
 void Main(){
 	GM = new GameManager();

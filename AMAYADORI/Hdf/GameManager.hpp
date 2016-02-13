@@ -13,4 +13,4 @@ public:
 	void Draw()const;
 };
 
-GameManager* GM;
+//
