@@ -5,7 +5,7 @@ class Actor {
 public:
 	Vec2 Pos;
 	int hp;
-	void Update();
-	void Draw()const;
-	bool IsDeath();
+	virtual void Update() = 0;
+	virtual void Draw()const = 0;
+	virtual bool IsDeath();
 };

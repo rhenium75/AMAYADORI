@@ -11,6 +11,5 @@ private:
 public:
 	void Update();
 	void Draw()const;
+	void AddBoss(Actor*);
 };
-
-//
