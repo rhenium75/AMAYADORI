@@ -1,5 +1,5 @@
 #pragma once
-#include "../AMAYADORI.hpp"
+#include "AMAYADORI.hpp"
 
 class Actor {
 public:

@@ -1,6 +1,6 @@
 #pragma once
-#include "../Hdf/GameManager.hpp"
-#include "../Hdf/Actor.hpp"
+#include "../GameManager.hpp"
+#include "../Actor.hpp"
 
 void GameManager::Update() {
 	for (int i = 0; i < Boss.size(); i++){
