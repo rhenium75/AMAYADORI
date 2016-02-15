@@ -3,8 +3,13 @@
 #include "../Hdf/Actor.hpp"
 
 void GameManager::Update() {
-	for (int i = 0; i < Boss.size();i++)
+	for (int i = 0; i < Boss.size(); i++){
 		Boss[i]->Update();
+		if (Boss[i]->IsDeath()) {
+			Boss.erase(Boss.begin()+i);
+			i--;
+		}
+	}
 }
 
 

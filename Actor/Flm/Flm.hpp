@@ -1,13 +1,15 @@
 #pragma once
-#include "../../AMAYADORI/Src/Actor.cpp"
+# include "../../AMAYADORI/AMAYADORI.hpp"
 
 class Flm : public Actor {
 public:
-	void init() {
+	int num;
+	Flm(int _num) {
 		hp = 1;
+		num = _num;
 	}
 	void Update()override{
-		Print(L"Test");
+		Println(num);
 	}
 	void Draw()const override {
 
