@@ -1,6 +1,17 @@
 #pragma once
 #include "AMAYADORI.hpp"
 
+struct Group {
+private:
+	int Num;
+	int Friend;
+	int Enemy;
+public:
+	Group();
+	bool Infriend();
+	bool Inenemy();
+};
+
 class Actor {
 public:
 	Vec2 Pos;
