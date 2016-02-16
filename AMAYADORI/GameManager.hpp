@@ -11,5 +11,10 @@ private:
 public:
 	void Update();
 	void Draw()const;
+	void ActorDraw(Array<Actor*>)const;
 	void AddBoss(Actor*);
+	void ActorUpdate(Array<Actor*>);
+	Array<Actor*> GetBoss();
+	Array<Actor*> GetCreature();
+	Array<Actor*> GetBullet();
 };

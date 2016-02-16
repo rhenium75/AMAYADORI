@@ -5,7 +5,7 @@
 void Main(){
 	GameManager *GM = new GameManager();
 	for (int i = 0; i < 10; i++) {
-		auto flm = new Flm(100);
+		auto flm = new Flm();
 		GM->AddBoss(flm);
 	}
 	while (System::Update()){
