@@ -2,12 +2,22 @@
 #include <Siv3D.hpp>
 #include "../Actor.hpp"
 
-Actor::Actor() {
+
+void Actor::Update(){
+}
+
+void Actor::Move(){
+	Pos += Force;
+	Force -= Force*AirResistance;
+}
+
+void Actor::Attack(){
 }
 
 bool Actor::IsDeath() {
 	return hp <= 0;
 }
 
-void Player::Update() {
+void Player::Move(){
+	Actor::Move();
 }
