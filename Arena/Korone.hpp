@@ -1,12 +1,13 @@
 #pragma once
 #include <Siv3D.hpp>
-#include "../../../AMAYADORI/AMAYADORI.hpp"
+#include "../AMAYADORI/AMAYADORI.hpp"
 
 namespace Korone{
 
 	class Korone : public Player {
 	public:
 		Korone(Group);
+		void init();
 		void Update()override;
 		void Attack()override;
 		void Draw()const override;

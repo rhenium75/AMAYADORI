@@ -75,7 +75,10 @@
     <ClCompile Include="AMAYADORI\Src\Group.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Arena\Actor\Korone\Korone.cpp">
+    <ClCompile Include="Arena\Src\Korone.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Arena\Src\garnet.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,6 +117,9 @@
       <Filter>リソース ファイル</Filter>
     </Image>
     <Image Include="Arena\Data\sword.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Arena\Data\Stage.png">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>
@@ -386,10 +392,13 @@
     <ClInclude Include="Arena\AMAYADORI_Arena.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Arena\Actor\Korone\Korone.hpp">
+    <ClInclude Include="Arena\Arena_SetUp.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Arena\Arena_SetUp.hpp">
+    <ClInclude Include="Arena\Korone.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Arena\garnet.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

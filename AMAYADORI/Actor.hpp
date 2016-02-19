@@ -11,6 +11,8 @@ public:
 	double AirResistance = 0.1;
 	Group group;
 	int hp = 1;
+	Actor();
+	virtual void init();
 	virtual void Update();
 	virtual void Move();
 	virtual void Attack();

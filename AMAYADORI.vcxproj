@@ -88,7 +88,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arena\Actor\Korone\Korone.cpp" />
+    <ClCompile Include="Arena\Src\garnet.cpp" />
+    <ClCompile Include="Arena\Src\Korone.cpp" />
     <ClCompile Include="AMAYADORI\Src\Actor.cpp" />
     <ClCompile Include="AMAYADORI\Src\Camera.cpp" />
     <ClCompile Include="AMAYADORI\Src\GameManager.cpp" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Arena\Data\korone.png" />
+    <Image Include="Arena\Data\Stage.png" />
     <Image Include="Arena\Data\sword.png" />
     <Image Include="Engine\Splash.png" />
     <Image Include="Example\Brick.jpg" />
@@ -199,7 +201,8 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arena\Actor\Korone\Korone.hpp" />
+    <ClInclude Include="Arena\garnet.hpp" />
+    <ClInclude Include="Arena\Korone.hpp" />
     <ClInclude Include="AMAYADORI\AMAYADORI.hpp" />
     <ClInclude Include="AMAYADORI\Actor.hpp" />
     <ClInclude Include="AMAYADORI\Camera.hpp" />

@@ -9,8 +9,11 @@ void GameManager::Update() {
 }
 
 void GameManager::ActorUpdate(Array<Actor*> actors) {
-	for (auto&& actor : actors)
+	for (auto&& actor : actors) {
 		actor->Update();
+		actor->Attack();
+		actor->Move();
+	}
 	Erase_if(actors, [](Actor* actor) { return actor->IsDeath(); });
 }
 
@@ -28,6 +31,14 @@ void GameManager::ActorDraw(Array<Actor*> actors)const {
 
 void GameManager::AddBoss(Actor *actor){
 	Boss.push_back(actor);
+}
+
+void GameManager::AddCreature(Actor *actor){
+	Bullet.push_back(actor);
+}
+
+void GameManager::AddBullet(Actor *actor){
+	Creature.push_back(actor);
 }
 
 Array<Actor*> GameManager::GetBoss() {
