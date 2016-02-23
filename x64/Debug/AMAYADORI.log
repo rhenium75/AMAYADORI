@@ -1,10 +1,4 @@
-﻿  Main.cpp
-c:\users\rhenium\documents\visual studio 2015\projects\amayadori\amayadori\main.cpp(7): error C2664: 'Korone::Korone::Korone(Korone::Korone &&)': 引数 1 を 'Group' から 'const Korone::Korone &' へ変換できません。
-  c:\users\rhenium\documents\visual studio 2015\projects\amayadori\amayadori\main.cpp(7): note: 理由: 'Group' から 'const Korone::Korone' へは変換できません。
-  c:\users\rhenium\documents\visual studio 2015\projects\amayadori\amayadori\main.cpp(7): note: この変換を実行可能なユーザー定義変換演算子がないか、または演算子を呼び出せません。
-  GameManager.cpp
+﻿  StageGarnet.cpp
   Actor.cpp
-  Korone.cpp
-c:\users\rhenium\documents\visual studio 2015\projects\amayadori\amayadori\arena\src\korone.cpp(27): warning C4100: 'g': 引数は関数の本体部で 1 度も参照されません。
-  garnet.cpp
   コードを生成中...
+  AMAYADORI.vcxproj -> C:\Users\daiki\Documents\Visual Studio 2015\Projects\AMAYADORI\x64\Debug\AMAYADORI.exe

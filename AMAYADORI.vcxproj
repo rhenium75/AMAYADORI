@@ -88,12 +88,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AMAYADORI\Src\Body.cpp" />
+    <ClCompile Include="AMAYADORI\Src\Stage.cpp" />
     <ClCompile Include="Arena\Src\garnet.cpp" />
     <ClCompile Include="Arena\Src\Korone.cpp" />
     <ClCompile Include="AMAYADORI\Src\Actor.cpp" />
     <ClCompile Include="AMAYADORI\Src\Camera.cpp" />
     <ClCompile Include="AMAYADORI\Src\GameManager.cpp" />
     <ClCompile Include="AMAYADORI\Src\Group.cpp" />
+    <ClCompile Include="Arena\Src\StageGarnet.cpp" />
+    <ClCompile Include="Arena\Src\StageTemplate.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +205,9 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AMAYADORI\Body.hpp" />
+    <ClInclude Include="AMAYADORI\Stage.hpp" />
+    <ClInclude Include="Arena\Declaration.hpp" />
     <ClInclude Include="Arena\garnet.hpp" />
     <ClInclude Include="Arena\Korone.hpp" />
     <ClInclude Include="AMAYADORI\AMAYADORI.hpp" />
@@ -209,8 +216,10 @@
     <ClInclude Include="AMAYADORI\GameManager.hpp" />
     <ClInclude Include="AMAYADORI\Group.hpp" />
     <ClInclude Include="AMAYADORI\ShareData.hpp" />
-    <ClInclude Include="Arena\AMAYADORI_Arena.hpp" />
-    <ClInclude Include="Arena\Arena_SetUp.hpp" />
+    <ClInclude Include="Arena\Arena.hpp" />
+    <ClInclude Include="Arena\Setup.hpp" />
+    <ClInclude Include="Arena\StageGarnet.hpp" />
+    <ClInclude Include="Arena\StageTemplate.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,9 +1,19 @@
 #pragma once
-#include "../AMAYADORI/AMAYADORI.hpp"
+#include "Declaration.hpp"
 
 namespace Garnet {
-	class Garnet : public Player {
-		Garnet(Group);
+	class Garnet : public EnemyBoss {
+	public:
+		int frameCount;
+		Garnet(Team);
+		void Move()override;
+		void Update()override;
+		void Draw()const override;
+	};
+
+	class NormalBullet : public Bullet {
+	public:
+		NormalBullet(Team, Vec2, Vec2);
 		void Update()override;
 		void Draw()const override;
 	};

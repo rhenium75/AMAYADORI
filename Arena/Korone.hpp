@@ -1,13 +1,11 @@
 #pragma once
-#include <Siv3D.hpp>
-#include "../AMAYADORI/AMAYADORI.hpp"
+#include "Declaration.hpp"
 
 namespace Korone{
 
 	class Korone : public Player {
 	public:
-		Korone(Group);
-		void init();
+		Korone(Team);
 		void Update()override;
 		void Attack()override;
 		void Draw()const override;
@@ -15,7 +13,9 @@ namespace Korone{
 
 	class NormalBullet : public Bullet {
 	public:
-		NormalBullet(Group,Vec2,Vec2);
+		int imgcount = 0;
+		NormalBullet(Team,Vec2,Vec2);
+		void Update()override;
 		void Draw()const override;
 	};
 }

@@ -1,59 +1,50 @@
 #pragma once
 #include "../Group.hpp"
 
-inline int GroupNum(int num) {
+
+Team Team::SetNum(int _num) {
+	Num = _num;
+	return *this;
+}
+
+Team Team::SetEnemy(int _enemy) {
+	Enemy = _enemy;
+	return *this;
+}
+
+Team Team::SetFriend(int _friend) {
+	Friend = _friend;
+	return *this;
+}
+
+inline int TeamNum(int num) {
 	return 1 << num;
 }
 
-Group::Group() {
-	Group(0,0,0);
-}
-
-Group::Group(int _num) {
-	Group(_num, 0, 0);
-}
-
-Group::Group(int _num, int enemynum) {
-	Group(_num, enemynum, 0);
-}
-
-Group::Group(int _num, int enemynum, int friendnum) {
-	Num = GroupNum(_num);
-	Enemy = enemynum;
-	Friend = friendnum;
-}
-
-void Group::SetNum(int num){
-	Num = num;
-}
-
-void Group::SetEnemy(int enemy){
-	Enemy = enemy;
-}
-
-void Group::SetFriend(int _friend){
-	Friend = _friend;
-}
-
-void Group::AddEnemy(int enemy){
+void Team::AddEnemy(int enemy){
 	Enemy |= enemy;
 }
 
-void Group::AddFriend(int){
+void Team::AddFriend(int _friend){
+	Friend |= _friend;
 }
 
-bool Group::Infriend(int g) {
-	return Friend & g;
+bool Team::Infriend(int t) {
+	return Friend & t;
 }
 
-bool Group::Inenemy(int g) {
-	return Enemy & g;
+bool Team::Inenemy(int t) {
+	return Enemy & t;
 }
 
-Group Group::copy() {
-	return Group(Num,Friend,Enemy);
-}
-
-int Group::operator()() {
+int Team::operator()() {
 	return Num;
+}
+
+Team Team::copy() {
+	return Team().SetNum(Num).SetFriend(Friend).SetEnemy(Enemy);
+}
+
+inline int GroupNum(int num) {
+	return 1 << num;
 }

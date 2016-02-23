@@ -1,16 +1,16 @@
-﻿# include "./Arena/AMAYADORI_Arena.hpp"
+﻿# include "./Arena/Arena.hpp"
 
 void Main(){
 	
 	Arena_Setup();
+	Stage* stage = new StageGarnet();
 
-	GM->AddBoss(new Korone::Korone(Group(0)));
-	
-	double r = 0;
+	const Font font(30);
 	while (System::Update()){
-		r += 0.01;
-		//TextureAsset(L"stage").rotate(r).drawAt(0,0);
-		GM->Update();
-		GM->Draw();
+	
+		stage->Update();
+		stage->Draw();
+		//Println(L"FrameRate:"+Format(Profiler::FPS()));
+		font.draw(L"FrameRate:" + Format(Profiler::FPS()));
 	}
 }
