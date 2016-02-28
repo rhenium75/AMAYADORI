@@ -47,6 +47,8 @@ class Player : public Actor {
 public:
 	bool low = false;
 	int Maxhp = 5000;
+	int sp = 1000;
+	int Maxsp = 1000;
 	int Muteki = 0;
 	int Roll = 0;
 	double h;

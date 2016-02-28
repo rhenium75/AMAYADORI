@@ -11,6 +11,6 @@ public:
 	BigCamera(GameManager*, Actor*);
 	void init(GameManager*, Actor*);
 	void update();
-	void draw()const;
+	void draw(const Texture*)const;
 	void ActorDraw(Array<Actor*>*)const;
 };

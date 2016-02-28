@@ -12,4 +12,5 @@ public:
 	StageKinako();
 	void Update()override;
 	void Draw()const override;
+	void Exit()override;
 };

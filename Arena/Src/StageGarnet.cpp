@@ -23,7 +23,7 @@ void StageGarnet::Update() {
 }
 
 void StageGarnet::Draw() const {
-	camera.draw();
+	camera.draw(&TextureAsset(L"stage"));
 }
 
 

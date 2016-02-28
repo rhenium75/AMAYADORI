@@ -3,6 +3,7 @@
 extern GameManager* GM;
 
 StageKinako::StageKinako() {
+	GM = new GameManager();
 	PlayerTeam = (new Team())->SetNum(TEAM_Player)->SetEnemy(TEAM_Enemy);
 	EnemyTeam = (new Team())->SetNum(TEAM_Enemy)->SetEnemy(TEAM_Player);
 	player = new Korone::Korone(EnemyTeam);
@@ -20,8 +21,14 @@ void StageKinako::Update() {
 }
 
 void StageKinako::Draw() const {
-	camera.draw();
+	camera.draw(&TextureAsset(L"stageload"));
 	Graphics2D::SetTransform(Mat3x2::Translate(Vec2(320, 350)));
-	double angle = Look(player->body.GetPos(),boss->body.GetPos());
-	Circle(Vec2(-100,0).rotate(angle-player->body.GetAngle())).setSize(10).draw();
+	if (!camera.ViewField.Hit(boss->body)) {
+		double angle = Look(player->body.GetPos(), boss->body.GetPos());
+		Triangle(Vec2(-100, 0).rotate(angle - player->body.GetAngle()), 30.).rotated(angle - player->body.GetAngle()+0.5).draw({200,0,0,100});
+	}
+}
+
+void StageKinako::Exit() {
+	SoundAsset(L"kinakobgm").stop();
 }

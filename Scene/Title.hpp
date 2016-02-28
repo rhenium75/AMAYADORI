@@ -6,7 +6,7 @@ struct Title : MyApp::Scene {
 	int frameCount = 0;
 	int select = 0;
 	double stringspace[3] = {0,0,0};
-	String string[3] = {L"STORY",L"ARENA",L"EXIT"};
+	String string[3] = {L"STORY?",L"ARENA",L"EXIT"};
 	Font font;
 	Font selectfont;
 

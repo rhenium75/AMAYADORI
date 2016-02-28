@@ -23,6 +23,7 @@ namespace Korone {
 		korona->low = low;
 		MoveSpeed = low ? 5: 10;
 		if(Roll == 59) SoundAsset(L"roll").playMulti();
+		if (Roll < 0) sp += low ? 4 : 2;
 	}
 	void Korone::Draw()const {
 		static int count = 0;
@@ -34,12 +35,12 @@ namespace Korone {
 		TextureDraw(TextureAsset(L"hpeffect_r").resize(150, 150), frameCount / 100.,low?150:50 + sin(frameCount / 100.)*30);
 		TextureDraw(TextureAsset(L"hpeffect_s").resize(80, 80), -frameCount / 100.,low?150:50 + sin(frameCount / 100.)*30);
 		if (low) {
-			hpbardraw(Maxhp*0.8, Maxhp, 38, 3, { 230,230,0,240 });
-			hpbardraw(Maxhp*0.6, Maxhp, 65, 4, { 100,200,100,240 });
+			hpbardraw(sp, Maxsp, 38, 3, { 230,230,0,240 });
+			hpbardraw(hp, Maxhp, 65, 4, { 100,200,100,240 });
 		}
 		else {
-			hpbardraw(Maxhp*0.8, Maxhp, 38, 3, { 230,230,0,150 });
-			hpbardraw(Maxhp*0.6, Maxhp, 65, 4, { 100,200,100,150 });
+			hpbardraw(sp, Maxsp, 38, 3, { 230,230,0,150 });
+			hpbardraw(hp, Maxhp, 65, 4, { 100,200,100,150 });
 		}
 		
 		if (Roll >= 39)
@@ -57,14 +58,16 @@ namespace Korone {
 	void NormalBullet::Attack() {
 		for (auto&& actor : GM->GetBoss()) {
 			if (team->Inenemy(actor->team->GetNum()) && body.Hit(actor->body)) {
-				actor->AddForce(this,body.GetForce()/10);
+				actor->AddForce(this,body.GetForce()/3);
+				actor->Damage(this,100);
 				hp = 0;
 				GM->AddEffect(new HitEffect(body.GetPos(),body.GetAngle()));
 			}
 		}
 		for (auto&& actor : GM->GetBullet()) {
 			if (team->Inenemy(actor->team->GetNum()) && body.Hit(actor->body)) {
-				actor->AddForce(this, body.GetForce()/10);
+				actor->AddForce(this, body.GetForce()/3);
+				actor->Damage(this, 100);
 				hp = 0;
 				GM->AddEffect(new HitEffect(body.GetPos(), body.GetAngle()));
 			}

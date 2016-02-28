@@ -82,14 +82,14 @@ void Player::Move() {
 		else {
 			moveAngle = body.GetAngle()-HalfPi;
 		}
-		if (Roll <= 0 && (Input::KeySpace.clicked || Input::MouseR.clicked)) {
+		if (sp > 200 && Roll <= 0 && (Input::KeySpace.clicked || Input::MouseR.clicked)) {
 			Muteki = 30;
 			Roll = 60;
+			sp -= 400;
 			body.AddForce(Vec2(30, 0).rotate(moveAngle));
 		}
 	}
 	body.AddAngle(Clamp((Mouse::Pos().x - 320) / 600., -0.1, 0.1));
-	Cursor::SetPos(320, 240);
 }
 
 int Player::Damage(Actor *, int damage) {

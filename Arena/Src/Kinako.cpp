@@ -11,7 +11,7 @@ namespace Kinako {
 
 	void Kinako::Move() {
 		EnemyBoss::Move();
-		if (pattern > 5 && body.GetPos().distanceFrom(Vec2(0,0)) > 100) {
+		if (pattern > 5 && body.GetPos().distanceFrom(Vec2(0, 0)) > 100) {
 			AddForce(this, Vec2(-2, 0).rotate(Look(body.GetPos())));
 		}
 	}
@@ -24,7 +24,7 @@ namespace Kinako {
 	void Kinako::Attack() {
 		if (pattern > 8) {
 			if (frameCount % 100 == 0)
-				GM->AddCreature(new BreakRock1(team->copy(),body.GetPos(),Vec2(0,-30).rotate(body.GetAngle())));
+				GM->AddCreature(new AutoBreakRock(team->copy(), body.GetPos(), Vec2(0, -30).rotate(body.GetAngle())));
 		}
 	}
 
@@ -32,15 +32,19 @@ namespace Kinako {
 		TextureDraw_NoRotate(TextureAsset(L"kinako"));
 	}
 
-	BreakRock1::BreakRock1(Team * _team, Vec2 pos, Vec2 force) {
-		team = _team;
-		SetType();
-		target_of_physics |= TYPE_Bullet;
-		body.SetPos(pos)->SetForce(force)->SetLength(50)->SetAirResistance(0.02);
+	void BreakRock1::Update() {
+		if (hp <= 100) {
+			hp = 0;
+			FOR(i,3)
+				GM->AddCreature(new BreakRock2(team->copy(),body.GetPos()+RandomVec2(-10,10),Vec2::Zero));
+		}
 	}
-
-	void BreakRock1::Draw() const {
-		TextureDraw(TextureAsset(L"rock1"));
+	void AutoBreakRock::Update() {
+		frameCount++;
+		if (hp <= 100 || frameCount > 120) {
+			hp = 0;
+			FOR(i, 3)
+				GM->AddCreature(new BreakRock2(team->copy(), body.GetPos() + RandomVec2(-10, 10), Vec2::Zero));
+		}
 	}
-
 }

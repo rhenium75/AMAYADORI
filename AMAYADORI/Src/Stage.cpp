@@ -6,3 +6,5 @@ Stage::Stage(){
 void Stage::Update(){
 }
 
+void Stage::Exit() {
+}

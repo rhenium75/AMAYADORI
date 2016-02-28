@@ -19,9 +19,8 @@ void BigCamera::update() {
 	ViewField.AddAngle((target->body.GetAngle()-ViewField.GetAngle())/3.);
 }
 
-void BigCamera::draw() const {
+void BigCamera::draw(const Texture* t) const {
 	Graphics2D::SetTransform(Mat3x2::Translate(Vec2(320,350)));
-	Texture* t = &TextureAsset(L"stage");
 	t->rotateAt(Vec2(2450,2450) + ViewField.GetPos(),-ViewField.GetAngle()).drawAt(0,0);
 	ActorDraw(&gamemanager->GetBuilding());
 	ActorDraw(&gamemanager->GetItem());
