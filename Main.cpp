@@ -1,16 +1,19 @@
-﻿# include "./Arena/Arena.hpp"
+﻿# include "Scene/Scene.hpp"
+# include "./Arena/Arena.hpp"
 
 void Main(){
-	
 	Arena_Setup();
-	Stage* stage = new StageGarnet();
 
-	const Font font(30);
+	Window::SetTitle(L"AMAYADORI BETA");
+	Window::Resize({ 640,480 });
+	MyApp manager;
+	manager.setFadeColor(Palette::Black);
+	manager.add<Title>(L"Title");
+	manager.add<Game>(L"Game");
+	manager.add<Select>(L"Select");
+	manager.init(L"Title");
+
 	while (System::Update()){
-	
-		stage->Update();
-		stage->Draw();
-		//Println(L"FrameRate:"+Format(Profiler::FPS()));
-		font.draw(L"FrameRate:" + Format(Profiler::FPS()));
+		if (!manager.updateAndDraw()) break;
 	}
 }

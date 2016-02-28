@@ -4,7 +4,7 @@
 #define ActorProcess(actors,process) for(auto&& actor : actors) actor->process
 #define ActorDeath(actors) for(int i = 0;i < actors.size();i++){ if(actors[i]->IsDeath()) { delete actors[i]; actors.erase(actors.begin()+i); i--; } }
 #define FOR(i,l) for(int i = 0;i < l;i++)
-#define PhysicsFOR(actor1, actor2, i, s) for (int j = s; j < actor2.size(); j++){if (actor1[i]->target_of_physics & actor2[j]->type){ Collision(actor1[i], actor2[j]);}}if(true)
+#define PhysicsFOR(actor1, actor2, i, s) for (int j = s; j < actor2.size(); j++){if (actor1[i]->target_of_physics & actor2[j]->type && actor2[j]->target_of_physics & actor1[i]->type){ Collision(actor1[i], actor2[j]);}}if(true)
 
 void GameManager::All_Update() {
 	Update();
@@ -44,6 +44,7 @@ void GameManager::Death() {
 	ActorDeath(Bullet);
 	ActorDeath(Building);
 	ActorDeath(Item);
+	ActorDeath(Effects);
 }
 
 void GameManager::Physics() {
@@ -76,9 +77,12 @@ void GameManager::Physics() {
 
 
 void GameManager::Draw()const {
+	ActorDraw(Building);
+	ActorDraw(Item);
 	ActorDraw(Bullet);
 	ActorDraw(Creature);
 	ActorDraw(Boss);
+	ActorDraw(Effects);
 }
 
 void GameManager::ActorDraw(Array<Actor*> actors)const {
@@ -87,12 +91,7 @@ void GameManager::ActorDraw(Array<Actor*> actors)const {
 }
 
 void GameManager::Collision(Actor* actor1,Actor* actor2) {
-	Body body1 = actor1->GetBody();
-	Body body2 = actor2->GetBody();
-	body1.intersects(body2);
-		//double angle = Atan2(actor1->Pos.y-actor2->Pos.y, actor1->Pos.x-actor2->Pos.x);
-		//actor1->AddForce(actor2,Vec2(1,0).rotate(angle));
-		//actor2->AddForce(actor1, Vec2(1, 0).rotate(angle+Pi));
+	actor1->body.intersects(actor2->body);
 	
 }
 
@@ -106,6 +105,10 @@ void GameManager::AddCreature(Actor *actor){
 
 void GameManager::AddBullet(Actor *actor){
 	Creature.push_back(actor);
+}
+
+void GameManager::AddEffect(Actor * ae) {
+	Effects.push_back(ae);
 }
 
 Array<Actor*> GameManager::GetBoss() {
@@ -126,4 +129,8 @@ Array<Actor*> GameManager::GetBuilding() {
 
 Array<Actor*> GameManager::GetItem() {
 	return Item;
+}
+
+Array<Actor*> GameManager::GetEffects() {
+	return Effects;
 }

@@ -3,7 +3,7 @@
 
 class StageStory : public Stage {
 public:
-	Actor* player;
+	Player* player;
 	Actor* boss;
 	StageStory();
 };

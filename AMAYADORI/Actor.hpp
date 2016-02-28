@@ -11,13 +11,12 @@
 class Actor {
 private:
 	//Actor() = default;
+	Vec2 CenterPos;
+	double CenterAngle;
 public:
-	Vec2 Pos;
-	Vec2 Force;
 	Body body;
-	double AirResistance = 0.1;
 
-	Team team;
+	Team* team;
 	int frameCount = 0;
 	int type = 0;
 	int target_of_attack = 0;
@@ -30,26 +29,44 @@ public:
 	virtual void Move();
 	virtual void Attack();
 	virtual void Draw()const = 0;
-
-	virtual Body GetBody();
+	void CameraDraw(Vec2,double);
+	void TextureDraw(const Texture)const;
+	void TextureDraw(const TextureRegion)const;
+	void TextureDraw(const TextureRegion,double,int)const;
+	void TextureDraw_NoRotate(const Texture)const;
+	void TextureDraw_NoRotate(const TextureRegion)const;
 
 	virtual int Damage(Actor*,int);
 	virtual bool AddForce(Actor*,Vec2);
 
 	virtual bool IsDeath();
+	void hpbardraw(int, int, double,double, Color)const;
 };
 
 class Player : public Actor {
 public:
+	bool low = false;
+	int Maxhp = 5000;
+	int Muteki = 0;
+	int Roll = 0;
+	double h;
 	Player();
-	double MoveSpeed = 1;
+	double MoveSpeed = 10;
 	virtual void Move();
+	int Damage(Actor*,int)override;
+	bool AddForce(Actor*,Vec2)override;
 	void SetType()override;
 };
 
 class EnemyBoss : public Actor {
 public:
 	EnemyBoss();
+	void SetType()override;
+};
+
+class EnemyCreture : public Actor {
+public:
+	EnemyCreture();
 	void SetType()override;
 };
 

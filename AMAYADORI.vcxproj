@@ -88,15 +88,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AMAYADORI\Src\Camera.cpp" />
     <ClCompile Include="AMAYADORI\Src\Body.cpp" />
     <ClCompile Include="AMAYADORI\Src\Stage.cpp" />
     <ClCompile Include="Arena\Src\garnet.cpp" />
+    <ClCompile Include="Arena\Src\Kinako.cpp" />
     <ClCompile Include="Arena\Src\Korone.cpp" />
     <ClCompile Include="AMAYADORI\Src\Actor.cpp" />
-    <ClCompile Include="AMAYADORI\Src\Camera.cpp" />
     <ClCompile Include="AMAYADORI\Src\GameManager.cpp" />
     <ClCompile Include="AMAYADORI\Src\Group.cpp" />
     <ClCompile Include="Arena\Src\StageGarnet.cpp" />
+    <ClCompile Include="Arena\Src\StageKinako.cpp" />
     <ClCompile Include="Arena\Src\StageTemplate.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -206,20 +208,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AMAYADORI\Body.hpp" />
+    <ClInclude Include="AMAYADORI\Camera.hpp" />
     <ClInclude Include="AMAYADORI\Stage.hpp" />
     <ClInclude Include="Arena\Declaration.hpp" />
     <ClInclude Include="Arena\garnet.hpp" />
+    <ClInclude Include="Arena\Kinako.hpp" />
     <ClInclude Include="Arena\Korone.hpp" />
     <ClInclude Include="AMAYADORI\AMAYADORI.hpp" />
     <ClInclude Include="AMAYADORI\Actor.hpp" />
-    <ClInclude Include="AMAYADORI\Camera.hpp" />
     <ClInclude Include="AMAYADORI\GameManager.hpp" />
     <ClInclude Include="AMAYADORI\Group.hpp" />
     <ClInclude Include="AMAYADORI\ShareData.hpp" />
     <ClInclude Include="Arena\Arena.hpp" />
     <ClInclude Include="Arena\Setup.hpp" />
     <ClInclude Include="Arena\StageGarnet.hpp" />
+    <ClInclude Include="Arena\StageKinako.hpp" />
     <ClInclude Include="Arena\StageTemplate.hpp" />
+    <ClInclude Include="Scene\Game.hpp" />
+    <ClInclude Include="Scene\Result.hpp" />
+    <ClInclude Include="Scene\Scene.hpp" />
+    <ClInclude Include="Scene\SceneDeclaration.hpp" />
+    <ClInclude Include="Scene\Select.hpp" />
+    <ClInclude Include="Scene\Title.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

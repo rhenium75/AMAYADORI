@@ -6,22 +6,24 @@
 
 extern GameManager* GM;
 
-StageGarnet::StageGarnet() {
-	player = new Korone::Korone(Team().SetNum(TEAM_Player));
-	boss = new Garnet::Garnet(Team().SetNum(TEAM_Enemy));
+StageGarnet::StageGarnet() {;
+	PlayerTeam = ((new Team())->SetNum(TEAM_Enemy)->SetEnemy(TEAM_Enemy));
+	EnemyTeam = ((new Team())->SetNum(TEAM_Enemy)->SetEnemy(TEAM_Player));
+	player = new Korone::Korone(PlayerTeam);
+	boss = new Garnet::Garnet(EnemyTeam);
 	GM->AddBoss(player);
 	GM->AddBoss(boss);
+
+	camera.init(GM,player);
 }
 
 void StageGarnet::Update() {
+	camera.update();
 	GM->All_Update();
 }
 
 void StageGarnet::Draw() const {
-	static double ro = 0;
-	ro += 0.01;
-	TextureAsset(L"stage").rotate(ro).drawAt(100,100);
-	GM->Draw();
+	camera.draw();
 }
 
 

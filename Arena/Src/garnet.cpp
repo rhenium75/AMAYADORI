@@ -3,42 +3,54 @@
 extern GameManager *GM;
 
 namespace Garnet {
-	Garnet::Garnet(Team g){
+	Garnet::Garnet(Team* g){
 		team = g;
+		SetType();
 	}
 
 	void Garnet::Move() {
+		EnemyBoss::Move();
 		static double ss = 0;
-		ss += 0.05;
-		Pos.set(300+cos(ss)*100,300+sin(ss)*100);
+		ss += 0.3;
+		//Pos += Vec2(10,0).rotate(sin(ss));
 		//Pos += (GM->GetBoss()[0]->Pos - Pos) / 10;
 	}
 
 	void Garnet::Update(){
 		frameCount++;
-		FOR(i,10 && frameCount%90 == 0) {
-			GM->AddBullet(new NormalBullet(team,Pos, Vec2(5, 0).rotate(i / 10.*TwoPi)));
+		FOR(i,30 && frameCount%40 == 0) {
+			GM->AddBullet(new NormalBullet(team,body.GetPos(), Vec2(10, 0).rotate(i / 30.*TwoPi)));
 		}
 	}
 
 	void Garnet::Draw() const{
-		TextureAsset(L"garnet").drawAt(Pos);
+		TextureDraw_NoRotate(TextureAsset(L"garnet"));
 	}
 
-	NormalBullet::NormalBullet(Team g, Vec2 pos, Vec2 move) {
+	NormalBullet::NormalBullet(Team* g, Vec2 pos, Vec2 move) {
 		team = g;
-		Pos = pos;
-		Force = move;
-		AirResistance = 0;
-		body.SetLength(10);
+		body.SetPos(pos)->SetForce(move)->SetAirResistance(0)->SetLength(10);
+		SetType();
 	}
 
 	void NormalBullet::Update() {
-		if (Pos.x < 0 || Pos.x > 800 || Pos.y < 0 || Pos.y > 500)
+		body.SetAnagle(Look(body.GetForce()) + HalfPi);
+		Vec2 Pos = body.GetPos();
+		if (Pos.x < -2000 || Pos.x > 2000 || Pos.y < -2000 || Pos.y > 2000)
 			hp = 0;
 	}
 
+	void NormalBullet::Attack() {
+		Array<Actor*> boss = GM->GetBoss();
+		for (auto&& actor : boss) {
+			Team t = *actor->team;
+			if ( body.Hit(actor->body)) {
+				actor->AddForce(this,Vec2(0,-2).rotate(body.GetAngle()));
+			}
+		}
+	}
+
 	void NormalBullet::Draw() const {
-		TextureAsset(L"sword").rotate(Atan2(Force.y,Force.x)+HalfPi).drawAt(Pos);
+		TextureDraw(TextureAsset(L"sword"));
 	}
 }

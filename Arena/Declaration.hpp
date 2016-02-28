@@ -9,3 +9,5 @@
 #define TEAM_Player3 8
 #define TEAM_Player4 16
 #define FOR(i,l) for(int i = 0;i < l;i++)
+#define Look(V1,V2) Atan2((V2.y - V1.y), (V2.x - V1.x))
+#define Look(V) Atan2(V.y,V.x)
