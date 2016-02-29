@@ -82,10 +82,10 @@ void Player::Move() {
 		else {
 			moveAngle = body.GetAngle()-HalfPi;
 		}
-		if (sp > 200 && Roll <= 0 && (Input::KeySpace.clicked || Input::MouseR.clicked)) {
+		if (sp > 400 && Roll <= 0 && (Input::KeySpace.clicked || Input::MouseR.clicked)) {
 			Muteki = 30;
 			Roll = 60;
-			sp -= 400;
+			sp = Max(sp-400,0);
 			body.AddForce(Vec2(30, 0).rotate(moveAngle));
 		}
 	}

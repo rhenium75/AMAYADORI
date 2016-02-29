@@ -5,7 +5,7 @@
 extern GameManager *GM = new GameManager();
 
 void Arena_Setup() {
-	GM = new GameManager();
+	//GM = new GameManager();
 
 	//Texture
 

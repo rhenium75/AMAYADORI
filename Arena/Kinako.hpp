@@ -8,7 +8,8 @@ namespace Kinako {
 	class Kinako : public EnemyBoss {
 	public:
 		int pattern = 0;
-		Kinako(Team*);
+		Actor* target;
+		Kinako(Team*,Actor*);
 		void Move()override;
 		void Update()override;
 		void Attack()override;
@@ -22,7 +23,7 @@ namespace Kinako {
 			SetType();
 			target_of_physics |= TYPE_Bullet;
 			body.SetPos(pos)->SetForce(force)->SetLength(50)->SetAirResistance(0.02);
-			hp = 500;
+			hp = 300;
 		}
 		virtual void Update()override;
 		virtual void Draw()const override {
@@ -37,7 +38,16 @@ namespace Kinako {
 			SetType();
 			target_of_physics |= TYPE_Bullet;
 			body.SetPos(pos)->SetForce(force)->SetLength(25)->SetAirResistance(0.02);
-			hp = 300;
+			hp = 100;
+		}
+		virtual void Attack()override {
+			for (auto&& actor : GM->GetBoss()) {
+				if (team->Inenemy(actor->team->GetNum()) && body.Hit(actor->body)) {
+					actor->AddForce(this,body.GetForce());
+					actor->Damage(this,300);
+					hp = 0;
+				}
+			}
 		}
 		virtual void Draw()const override {
 			TextureDraw(TextureAsset(L"rock2"));
@@ -51,7 +61,7 @@ namespace Kinako {
 			SetType();
 			target_of_physics |= TYPE_Bullet;
 			body.SetPos(pos)->SetForce(force)->SetLength(50)->SetAirResistance(0.02);
-			hp = 500;
+			hp = 300;
 		}
 		virtual void Update()override;
 		virtual void Draw()const override {

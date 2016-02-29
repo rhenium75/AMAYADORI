@@ -1,19 +1,12 @@
-﻿  Kinako.cpp
-  StageKinako.cpp
-  Main.cpp
-c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(13): warning C4005: 'Look': マクロが再定義されました。 (ソース ファイルをコンパイルしています Arena\Src\Kinako.cpp)
-  c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(12): note: 'Look' の以前の定義を確認してください (ソース ファイルをコンパイルしています Arena\Src\Kinako.cpp)
-c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(13): warning C4005: 'Look': マクロが再定義されました。 (ソース ファイルをコンパイルしています Main.cpp)
-  c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(12): note: 'Look' の以前の定義を確認してください (ソース ファイルをコンパイルしています Main.cpp)
-c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\scene\Game.hpp(54): warning C4244: '引数': 'double' から 's3d::uint32' への変換です。データが失われる可能性があります。 (ソース ファイルをコンパイルしています Main.cpp)
-c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(13): warning C4005: 'Look': マクロが再定義されました。 (ソース ファイルをコンパイルしています Arena\Src\StageKinako.cpp)
-  c:\users\daiki\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(12): note: 'Look' の以前の定義を確認してください (ソース ファイルをコンパイルしています Arena\Src\StageKinako.cpp)
-Arena\Src\StageKinako.cpp(24): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
-Arena\Src\StageKinako.cpp(27): warning C4002: マクロ 'Look' に指定された実引数の数が多すぎます。
-     ライブラリ C:\Users\daiki\documents\visual studio 2015\Projects\AMAYADORI\x64\Release\AMAYADORI.lib とオブジェクト C:\Users\daiki\documents\visual studio 2015\Projects\AMAYADORI\x64\Release\AMAYADORI.exp を作成中
+﻿  Korone.cpp
+c:\users\rhenium\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(13): warning C4005: 'Look': マクロが再定義されました。
+  c:\users\rhenium\documents\visual studio 2015\projects\amayadori\amayadori\arena\Declaration.hpp(12): note: 'Look' の以前の定義を確認してください
+Arena\Src\Korone.cpp(35): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+Arena\Src\Korone.cpp(36): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+     ライブラリ C:\Users\Rhenium\Documents\Visual Studio 2015\Projects\AMAYADORI\x64\Release\AMAYADORI.lib とオブジェクト C:\Users\Rhenium\Documents\Visual Studio 2015\Projects\AMAYADORI\x64\Release\AMAYADORI.exp を作成中
   コード生成しています。
-  35 of 1240 functions ( 2.8%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+  4 of 1243 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
-  AMAYADORI.vcxproj -> C:\Users\daiki\documents\visual studio 2015\Projects\AMAYADORI\x64\Release\AMAYADORI.exe
+  AMAYADORI.vcxproj -> C:\Users\Rhenium\Documents\Visual Studio 2015\Projects\AMAYADORI\x64\Release\AMAYADORI.exe

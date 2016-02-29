@@ -23,7 +23,7 @@ namespace Korone {
 		korona->low = low;
 		MoveSpeed = low ? 5: 10;
 		if(Roll == 59) SoundAsset(L"roll").playMulti();
-		if (Roll < 0) sp += low ? 4 : 2;
+		if (Roll < 0) sp = Min(sp+(low ? 4 : 2),1000);
 	}
 	void Korone::Draw()const {
 		static int count = 0;

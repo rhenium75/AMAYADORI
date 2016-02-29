@@ -1,4 +1,3 @@
-#pragma once
 #include "../GameManager.hpp"
 #include "../Actor.hpp"
 #define ActorProcess(actors,process) for(auto&& actor : actors) actor->process

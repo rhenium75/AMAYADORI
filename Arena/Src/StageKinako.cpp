@@ -7,7 +7,7 @@ StageKinako::StageKinako() {
 	PlayerTeam = (new Team())->SetNum(TEAM_Player)->SetEnemy(TEAM_Enemy);
 	EnemyTeam = (new Team())->SetNum(TEAM_Enemy)->SetEnemy(TEAM_Player);
 	player = new Korone::Korone(EnemyTeam);
-	boss = new Kinako::Kinako(PlayerTeam);
+	boss = new Kinako::Kinako(PlayerTeam,player);
 	GM->AddBoss(player);
 	GM->AddBoss(boss);
 	camera.init(GM,player);
@@ -18,6 +18,8 @@ StageKinako::StageKinako() {
 void StageKinako::Update() {
 	camera.update();
 	GM->All_Update();
+	for (auto&& actor : GM->GetBoss())
+		actor->body.SetPos(Vec2(Clamp(actor->body.GetPos().x,-500.,500.), Clamp(actor->body.GetPos().y, -500., 500.)));
 }
 
 void StageKinako::Draw() const {
