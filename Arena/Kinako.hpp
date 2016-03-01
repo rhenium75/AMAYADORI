@@ -68,4 +68,26 @@ namespace Kinako {
 			TextureDraw(TextureAsset(L"rock1"));
 		}
 	};
+	class NormalBullet : public Bullet {
+	public:
+		NormalBullet(Team* t,Vec2 pos,Vec2 force){
+			team = t;
+			body.SetPos(pos)->SetForce(force)->SetLength(5)->SetAirResistance(0);
+			hp = 1;
+		}
+		void Attack()override {
+			for(auto&& actor : GM->GetBoss())
+				if(body.Hit(actor->body))
+					if (team->Inenemy(actor->team->GetNum())) {
+						actor->Damage(this,300);
+						hp = 0;
+					}
+					else if (team->GetNum() == actor->team->GetNum()) {
+						//hp = 0;
+					}
+		}
+		void Draw()const override {
+			TextureDraw(TextureAsset(L"rock3").resize(20,20));
+		}
+	};
 }

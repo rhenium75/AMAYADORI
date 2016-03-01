@@ -7,7 +7,7 @@ extern GameManager* GM;
 namespace Korone {
 	Korone::Korone(Team* t){
 		team = t;
-		body.SetLength(30);
+		body.SetLength(30)->SetPos(Vec2(0,500));
 		SetType();
 		korona = new Korona(team, body.GetPos());
 		GM->AddCreature(korona);
@@ -17,6 +17,7 @@ namespace Korone {
 	void Korone::Update() {
 		frameCount++;
 		Muteki--;
+		hit--;
 		korona->targetpos = body.GetPos() + Vec2(0,low?-40:0).rotate(body.GetAngle());
 		korona->targetangle = body.GetAngle();
 		low = Input::KeyShift.pressed;
@@ -49,6 +50,16 @@ namespace Korone {
 			TextureDraw(TextureAsset(L"korone" + Format(int(h)+1) +  Format(name[int(h)+1][count])).resize(60, 60));
 	}
 
+
+	int Korone::Damage(Actor *, int damage) {
+		if (hit < 0) {
+			hp = Max(hp - damage, 0);
+			hit = 30;
+			SoundAsset(L"death").playMulti();
+		}
+		return 0;
+	}
+
 	NormalBullet::NormalBullet(Team* t, Vec2 pos, Vec2 move){
 		team = t;
 		body.SetPos(pos)->SetForce(move)->SetAirResistance(0)->SetLength(50)->SetAnagle(Look(move)+HalfPi);
@@ -62,6 +73,7 @@ namespace Korone {
 				actor->Damage(this,100);
 				hp = 0;
 				GM->AddEffect(new HitEffect(body.GetPos(),body.GetAngle()));
+				SoundAsset(L"firehit").playMulti();
 			}
 		}
 		for (auto&& actor : GM->GetBullet()) {
@@ -70,6 +82,7 @@ namespace Korone {
 				actor->Damage(this, 100);
 				hp = 0;
 				GM->AddEffect(new HitEffect(body.GetPos(), body.GetAngle()));
+				SoundAsset(L"firehit").playMulti();
 			}
 		}
 	}
@@ -119,7 +132,7 @@ namespace Korone {
 		body.AddAngle((targetangle - body.GetAngle()) / (low ? 2 : 5));
 		if (Input::MouseL.pressed && charge > 20) {
 			charge = 0;
-			SoundAsset(L"fire").playMulti();
+			SoundAsset(L"firehit").playMulti();
 			GM->AddBullet(new NormalBullet(team->copy(), body.GetPos(), Vec2(0, -15).rotate(body.GetAngle())));
 		}
 	}
@@ -127,7 +140,6 @@ namespace Korone {
 	void Korona::Draw() const {
 		int num[4] = {1,2,1,3};
 		TextureDraw(TextureAsset(L"korona"+Format(num[(frameCount/7)%4])).resize(50, 50));
-
 	}
 
 }

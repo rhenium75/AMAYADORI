@@ -12,6 +12,7 @@ struct Select : MyApp::Scene {
 	void update() override {
 		if (Input::MouseL.clicked || Input::KeyEnter.clicked || Input::KeySpace.clicked) {
 			SoundAsset(L"titlebgm").stop();
+			SoundAsset(L"selectenter").playMulti();
 			changeScene(L"Game");
 		}
 	}

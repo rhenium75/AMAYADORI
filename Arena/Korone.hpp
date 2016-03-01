@@ -9,6 +9,7 @@ namespace Korone{
 		Korone(Team*);
 		void Update()override;
 		void Draw()const override;
+		int Damage(Actor*, int)override;
 	};
 
 	class Korona : public Actor {

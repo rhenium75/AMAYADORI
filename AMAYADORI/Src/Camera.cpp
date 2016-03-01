@@ -20,7 +20,7 @@ void BigCamera::update() {
 }
 
 void BigCamera::draw(const Texture* t) const {
-	Graphics2D::SetTransform(Mat3x2::Translate(Vec2(320,350)));
+	Graphics2D::SetTransform(Mat3x2::Translate(Vec2(320,350)+RandomVec2(Circle(0, 0, Max(0,((Player*)target)->hit)))));
 	t->rotateAt(Vec2(2450,2450) + ViewField.GetPos(),-ViewField.GetAngle()).drawAt(0,0);
 	ActorDraw(&gamemanager->GetBuilding());
 	ActorDraw(&gamemanager->GetItem());

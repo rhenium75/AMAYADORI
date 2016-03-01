@@ -67,12 +67,19 @@ void Arena_Setup() {
 	SoundAsset::Register(L"titlebgm", L"Data/BGM/bgm1.mp3");
 	SoundAsset::Register(L"kinakobgm", L"Data/BGM/bgm3.mp3");
 
+
 	SoundAsset::Register(L"selectcursor", L"Data/SE/select_cursor.mp3");
 	SoundAsset::Register(L"selectenter", L"Data/SE/select_ok.mp3");
 
+	SoundAsset::Register(L"gamestart", L"Data/SE/gong-played1.mp3");
+	SoundAsset::Register(L"gameend", L"Data/SE/gong-played2.mp3");
+
 	SoundAsset::Register(L"fire", L"Data/SE/set/tm2_wood004.mp3");
+	SoundAsset::Register(L"firehit", L"Data/SE/firehit.mp3");
 	SoundAsset::Register(L"roll", L"Data/SE/set/tm2_shake001.mp3");
 	SoundAsset::Register(L"rock", L"Data/SE/set/tm2_wood003.mp3");
+
+	SoundAsset::Register(L"death", L"Data/SE/tm2_death000_.mp3");
 
 	SoundAsset::PreloadAll();
 }

@@ -3,7 +3,7 @@
 #define ActorProcess(actors,process) for(auto&& actor : actors) actor->process
 #define ActorDeath(actors) for(int i = 0;i < actors.size();i++){ if(actors[i]->IsDeath()) { delete actors[i]; actors.erase(actors.begin()+i); i--; } }
 #define FOR(i,l) for(int i = 0;i < l;i++)
-#define PhysicsFOR(actor1, actor2, i, s) for (int j = s; j < actor2.size(); j++){if (actor1[i]->target_of_physics & actor2[j]->type && actor2[j]->target_of_physics & actor1[i]->type){ Collision(actor1[i], actor2[j]);}}if(true)
+#define PhysicsFOR(actor1, actor2, i, s) for (int j = s; j < actor2.size(); j++){if (actor1[i]->target_of_physics & actor2[j]->type && actor2[j]->target_of_physics & actor1[i]->type){ Collision(actor1[i], actor2[j]);}}
 
 void GameManager::All_Update() {
 	Update();

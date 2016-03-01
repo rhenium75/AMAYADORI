@@ -44,6 +44,10 @@ struct Game : MyApp::Scene {
 		}
 		if (Input::KeyEscape.clicked)
 			stop = !stop;
+		if (stage->gameendframe == 1) {
+			stage->Exit();
+			changeScene(L"Title");
+		}
 	}
 
 	void draw()const override {
